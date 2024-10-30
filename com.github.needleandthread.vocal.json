@@ -24,7 +24,6 @@
 		"--talk-name=org.xfce.SessionManager",
 		"--talk-name=org.gnome.SessionManager",
 
-		"--filesystem=xdg-data/vocal:create",
 		"--metadata=X-DConf=migrate-path=/com/github/needleandthread/vocal/"
 	],
 	"modules": [{
