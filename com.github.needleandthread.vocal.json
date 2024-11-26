@@ -30,11 +30,21 @@
 		"name": "vocal",
 		"buildsystem": "cmake-ninja",
 		"config-opts": ["-DCMAKE_BUILD_TYPE=RelWithDebInfo"],
-		"sources": [{
+		"sources": [
+			{
 				"type": "archive",
 				"url": "https://github.com/needle-and-thread/vocal/archive/2.4.2.tar.gz",
 				"sha256": "be1991f08db05feacad30a0f459002327ba5ff3cb04757383f1da62904acdb41"
+			},
+			{
+				"type": "patch",
+				"path": "fix-appdata.patch"
 			}
+		],
+		"post-install": [
+			"mkdir -p /app/share/icons/hicolor/scalable/apps",
+			"mv /app/share/icons/hicolor/128x128/apps/${FLATPAK_ID}.svg /app/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg",
+			"find /app/share/icons/hicolor -type f -not -path \"*scalable*\" -not -path \"*actions*\" -name \"*.svg\" -delete"
 		]
 	}]
 }
